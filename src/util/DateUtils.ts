@@ -37,7 +37,6 @@ export function getMonthName(m: number){
 
 export function getDateWeekday(y: number, m: number, d: number) {
     const date = new Date(y, m, d)
-    console.log(Weekdays[date.getDay()])
     return Weekdays[date.getDay()]
 }
 

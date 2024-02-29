@@ -1,6 +1,6 @@
 import { useAtom } from "jotai"
 import { yearAtom } from "../state/atoms"
-import { yearOptions } from "../util/DateUtils"
+import { yearOptions } from "../util/dateUtils"
 
 type Props = {}
 

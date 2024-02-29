@@ -1,8 +1,8 @@
 import { useAtom } from "jotai"
-import { Months, isMonth } from "../util/DateUtils"
-import './Calendar.scss'
+import { Months, isMonth } from "../util/dateUtils"
+import './calendar.scss'
 import { monthAtom } from "../state/atoms"
-import { useConditionalClassName } from "../util/ClassName"
+import { useConditionalClassName } from "../util/className"
 
 type Props = {}
 

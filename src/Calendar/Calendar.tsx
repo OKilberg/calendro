@@ -1,9 +1,9 @@
 import MonthSelector from "./MonthSelector"
-import './Calendar.scss'
+import './calendar.scss'
 import { useAtom } from "jotai"
 import { monthAtom, yearAtom } from "../state/atoms"
 import { useEffect, useMemo, useState } from "react"
-import { getDateWeekdayInitials } from "../util/DateUtils"
+import { getDateWeekdayInitials } from "../util/dateUtils"
 import YearSelector from "./YearSelector"
 
 type Props = {}
@@ -35,12 +35,10 @@ function DateItem({dayNum}:{dayNum: number}){
   const [month] = useAtom(monthAtom)
   const [year] = useAtom(yearAtom)
 
-  const weekday = useMemo(
+  const weekday = useMemo(//Memo here is probably overkill but I wanted to try using it
     ()=>getDateWeekdayInitials(year, month, dayNum, 2),
     [year, month, dayNum]
   )
-
-  console.log(weekday)
 
   return (
     <li key={dayNum} className="day">
