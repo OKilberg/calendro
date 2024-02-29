@@ -1,7 +1,5 @@
 import { atom } from "jotai";
+import { currentMonth, currentYear } from "../util/DateUtils";
 
-const date = new Date();
-const currentMonth = date.getMonth();
-const currentYear = date.getFullYear();
 export const monthAtom = atom(currentMonth);
 export const yearAtom = atom(currentYear);

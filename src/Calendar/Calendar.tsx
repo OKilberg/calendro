@@ -3,23 +3,26 @@ import './Calendar.scss'
 import { useAtom } from "jotai"
 import { monthAtom, yearAtom } from "../state/atoms"
 import { useEffect, useMemo, useState } from "react"
-import { getDateWeekday, getDateWeekdayInitials } from "../util/DateUtils"
+import { getDateWeekdayInitials } from "../util/DateUtils"
+import YearSelector from "./YearSelector"
 
 type Props = {}
 
 export default function Calendar({}: Props) {
   const [month] = useAtom(monthAtom)
+  const [year] = useAtom(yearAtom)
   const [days, setDays] = useState(0)
 
   useEffect(()=>{
     const offsetMonth = month+1;
-    const date: Date = new Date(2024, offsetMonth, 0); // Returns last day of previous month, therefore offset is required
+    const date: Date = new Date(year, offsetMonth, 0); // Returns last day of previous month, therefore offset is required
     const monthDays: number = date.getDate()
     setDays(monthDays)
-  },[month])
+  },[month, year])
 
   return (
     <div className="calendar">
+        <YearSelector/>
         <MonthSelector/>
         <div className="day-list">
           {Array(days).fill('').map((_day, index)=><DateItem dayNum={index+1}/>)}
@@ -31,6 +34,7 @@ export default function Calendar({}: Props) {
 function DateItem({dayNum}:{dayNum: number}){
   const [month] = useAtom(monthAtom)
   const [year] = useAtom(yearAtom)
+
   const weekday = useMemo(
     ()=>getDateWeekdayInitials(year, month, dayNum, 2),
     [year, month, dayNum]
