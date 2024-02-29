@@ -1,5 +1,5 @@
 import './App.scss'
-import Calendar from './Calendar/Calendar'
+import Calendar from './calendar/Calendar'
 
 function App() {
 
